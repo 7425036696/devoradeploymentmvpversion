@@ -14,8 +14,9 @@ export const codingAgent = inngest.createFunction(
   { event: "coding-agent/run" },
   async ({ event, step }) => {
     const sandboxId = await step.run("get-sandbox-id", async () => {
-      const sandbox = await Sandbox.create("devora-nextjs-template");
-      await sandbox.setTimeout(60_000 * 10)
+      const sandbox = await Sandbox.create("devora-nextjs-template",{
+        timeoutMs: 60000
+      });
       return sandbox.sandboxId;
     });
     const previousMessages = await step.run("get-previous-messages", async () => {
