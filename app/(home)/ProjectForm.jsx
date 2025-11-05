@@ -67,7 +67,7 @@ export const PROJECT_TEMPLATES = [
     }
 ]
 function ProjectForm() {
-    const {isSignedIn} = useUser()
+    const { isSignedIn } = useUser()
     const router = useRouter()
     const [isFocused, setIsFocused] = useState(false);
     const [showUsage, setShowUsage] = useState(false);
@@ -83,7 +83,7 @@ function ProjectForm() {
         try {
             setIsLoading(true)
             form.reset()
-            if(isSignedIn === false){
+            if (isSignedIn === false) {
                 router.push("/sign-in")
             }
             const content = {
@@ -91,7 +91,7 @@ function ProjectForm() {
             };
             const res = await fetch("/api/project/create", {
                 method: "POST",
-                body:JSON.stringify(content),
+                body: JSON.stringify(content),
                 headers: { "Content-Type": "application/json" },
             });
 
@@ -100,8 +100,13 @@ function ProjectForm() {
             const { projectId } = await res.json();
             console.log(projectId, "projectId")
             if (projectId) {
-                await inngest.send({ name: "coding-agent/run", data: { value: values.value, projectId: projectId } });
+                await fetch("/api/runCodingAgent", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ value: values.value, projectId }),
+                });
             }
+
 
 
             // 2️⃣ Redirect immediately to /project/[projectId]

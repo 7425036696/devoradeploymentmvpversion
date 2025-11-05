@@ -65,10 +65,13 @@ function MessageForm({ projectId }) {
 
       if (!res.ok) throw new Error("Failed to create Message");
 
-      await inngest.send({
-        name: "coding-agent/run",
-        data: { value: values.value, projectId },
+      await fetch("/api/runCodingAgent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ value: values.value, projectId }),
       });
+
+
 
       form.reset();
 
