@@ -1,0 +1,17 @@
+# This is a config for E2B sandbox template.
+# You can use template ID (xpgv6uitkw68gsw7wsw1) or template name (devora-nextjs-template) to create a sandbox:
+
+# Python SDK
+# from e2b import Sandbox, AsyncSandbox
+# sandbox = Sandbox.create("devora-nextjs-template") # Sync sandbox
+# sandbox = await AsyncSandbox.create("devora-nextjs-template") # Async sandbox
+
+# JS SDK
+# import { Sandbox } from 'e2b'
+# const sandbox = await Sandbox.create('devora-nextjs-template')
+
+team_id = "a3d9e6d3-8dd5-42f1-8284-2ede0801023f"
+start_cmd = "/compile_page.sh"
+dockerfile = "e2b.Dockerfile"
+template_name = "devora-nextjs-template"
+template_id = "xpgv6uitkw68gsw7wsw1"
