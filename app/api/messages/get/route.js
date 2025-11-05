@@ -3,7 +3,7 @@ import { connectToDatabase } from "@/lib/mongodb";
 import { Message } from "@/models/Message";
 import { Project } from "@/models/Project";
 import { getAuth } from "@clerk/nextjs/server";
-import { Fragment } from "@/models/Fragment";
+
 export async function POST(request) {
   const { userId } = getAuth(request)
   try {
