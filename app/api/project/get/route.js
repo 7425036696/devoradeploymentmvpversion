@@ -3,7 +3,7 @@ import { connectToDatabase } from "@/lib/mongodb";
 import { Project } from "@/models/Project";
 import { NextRequest } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
-
+import { Message } from "@/models/Message";
 export async function POST(request) {
   const { userId } = getAuth(request);
   try {
