@@ -42,7 +42,7 @@ export const codingAgent = inngest.createFunction(
     const codeAgent = createAgent({
       name: "Code Agent",
       description: "You are an expert Coding Agent.",
-      system: BETTER_PROMPT,
+      system: PROMPT,
       model: gemini({
         model: "gemini-2.5-flash",
         apiKey: process.env.GEMINI_API_KEY
