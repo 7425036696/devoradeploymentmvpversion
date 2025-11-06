@@ -4,7 +4,7 @@ import { gemini } from "@inngest/agent-kit";
 import Sandbox from "@e2b/code-interpreter";
 import { getSandbox, lastAssistantTextMessageContent } from "./utils";
 import { z } from "zod";
-import { PROMPT, FRAGMENT_TITLE_PROMPT, RESPONSE_PROMPT } from "../prompt";
+import { PROMPT, FRAGMENT_TITLE_PROMPT, RESPONSE_PROMPT,BETTER_PROMPT } from "../prompt";
 import { Message } from "@/models/Message";
 import { Fragment } from "@/models/Fragment";
 import { connectToDatabase } from "@/lib/mongodb";
@@ -42,7 +42,7 @@ export const codingAgent = inngest.createFunction(
     const codeAgent = createAgent({
       name: "Code Agent",
       description: "You are an expert Coding Agent.",
-      system: PROMPT,
+      system: BETTER_PROMPT,
       model: gemini({
         model: "gemini-2.5-flash",
         apiKey: process.env.GEMINI_API_KEY
